@@ -9,8 +9,8 @@ class CategoryPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('category page'),
       ),
-      body: const Center(
-        child: Text("nothing"),
+      body: Center(
+        child: Text("nothing", style: Theme.of(context).textTheme.bodyLarge,),
       ),
     );
   }
