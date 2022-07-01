@@ -9,8 +9,8 @@ final myLightThemeData = ThemeData.light().copyWith(
   appBarTheme: const AppBarTheme(
     titleTextStyle: TextStyle(
       fontSize: 20,
-      fontFamily: 'MPLUSRounded1c',
-      fontWeight: FontWeight.w500,
+      fontFamily: 'KaiseiOpti',
+      fontWeight: FontWeight.w700,
     ),
   ),
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
@@ -32,8 +32,8 @@ final myDarkThemeData = ThemeData.dark().copyWith(
     color: Color(0xFFC1DB81),
     titleTextStyle: TextStyle(
       fontSize: 20,
-      fontFamily: 'MPLUSRounded1c',
-      fontWeight: FontWeight.w500,
+      fontFamily: 'KaiseiOpti',
+      fontWeight: FontWeight.w700,
     ),
   ),
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
