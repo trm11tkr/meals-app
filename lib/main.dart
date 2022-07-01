@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:meals_app/category_meals_page.dart';
 
-import './categories_page.dart';
+import './pages/category_meals_page.dart';
+import './pages/categories_page.dart';
 import './config/my_theme_data.dart';
 
 void main() {

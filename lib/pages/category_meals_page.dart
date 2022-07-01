@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import './models/meal.dart';
-import './dummy_data.dart';
+import '../models/meal.dart';
+import '../dummy_data.dart';
 
 class CategoryMealsPage extends StatelessWidget {
   const CategoryMealsPage(
