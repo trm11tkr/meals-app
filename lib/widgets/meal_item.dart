@@ -6,16 +6,31 @@ class MealItem extends StatelessWidget {
   const MealItem({Key? key, required this.meal}) : super(key: key);
 
   final Meal meal;
+  void selectMeal() {}
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ListTile(
-        title: Text(
-          meal.title,
-          style: Theme.of(context).textTheme.bodyLarge,
+    return InkWell(
+      onTap: selectMeal,
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
         ),
+        elevation: 4,
+        margin:const EdgeInsets.all(4),
+        child: Column(children: [
+          Stack(
+            children: [
+              ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(15),
+                  topRight: Radius.circular(15),
+                ),
+                child: Image.network(meal.imageUrl, height: 250, width: double.infinity, fit: BoxFit.cover,),
+              )
+            ],
+          )
+        ]),
       ),
     );
   }
