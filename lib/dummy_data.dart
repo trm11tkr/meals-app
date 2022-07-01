@@ -4,19 +4,57 @@ import './models/category.dart';
 import './models/meal.dart';
 
 const DUMMY_CATEGORIES = [
-  Category(id: 'c1', title: 'イタリアン', color: Colors.pink),
-  Category(id: 'c2', title: '中華', color: Colors.yellow),
-  Category(id: 'c3', title: 'ファストフード', color: Colors.green),
-  Category(id: 'c4', title: 'ラーメン', color: Colors.blue),
-  Category(id: 'c5', title: '焼肉', color: Colors.amber),
-  Category(id: 'c6', title: '和食', color: Colors.purple),
-  Category(id: 'c7', title: '洋食', color: Colors.lightGreen),
-  Category(id: 'c8', title: 'カフェ', color: Colors.deepOrange),
-  Category(id: 'c9', title: 'スイーツ', color: Colors.red),
-  Category(id: 'c10', title: '老舗', color: Colors.cyan),
-];
-
-const DUMMY_MEALS = [
+  Category(
+    id: 'c1',
+    title: 'Italian',
+    color: Colors.purple,
+  ),
+  Category(
+    id: 'c2',
+    title: 'Quick & Easy',
+    color: Colors.red,
+  ),
+  Category(
+    id: 'c3',
+    title: 'Hamburgers',
+    color: Colors.orange,
+  ),
+  Category(
+    id: 'c4',
+    title: 'German',
+    color: Colors.amber,
+  ),
+  Category(
+    id: 'c5',
+    title: 'Light & Lovely',
+    color: Colors.blue,
+  ),
+  Category(
+    id: 'c6',
+    title: 'Exotic',
+    color: Colors.green,
+  ),
+  Category(
+    id: 'c7',
+    title: 'Breakfast',
+    color: Colors.lightBlue,
+  ),
+  Category(
+    id: 'c8',
+    title: 'Asian',
+    color: Colors.lightGreen,
+  ),
+  Category(
+    id: 'c9',
+    title: 'French',
+    color: Colors.pink,
+  ),
+  Category(
+    id: 'c10',
+    title: 'Summer',
+    color: Colors.teal,
+  ),
+];const DUMMY_MEALS = [
   Meal(
     id: 'm1',
     categories: [
