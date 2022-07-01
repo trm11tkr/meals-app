@@ -21,6 +21,19 @@ class MealItem extends StatelessWidget {
     }
   }
 
+  String get affordabilityText {
+    switch (meal.affordability) {
+      case Affordability.affordable:
+        return 'Affordable';
+      case Affordability.pricey:
+        return 'Pricey';
+      case Affordability.luxurious:
+        return 'Luxurious';
+      default:
+        return 'Unknown';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -97,6 +110,20 @@ class MealItem extends StatelessWidget {
                       ),
                       Text(
                         complexityText,
+                        style: Theme.of(context).textTheme.labelMedium,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.attach_money,
+                      ),
+                      const SizedBox(
+                        width: 6,
+                      ),
+                      Text(
+                        affordabilityText,
                         style: Theme.of(context).textTheme.labelMedium,
                       ),
                     ],
