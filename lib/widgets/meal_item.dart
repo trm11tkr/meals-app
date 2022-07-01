@@ -53,6 +53,21 @@ class MealItem extends StatelessWidget {
                 ),
               )
             ],
+          ),
+          Padding(
+            padding: EdgeInsets.all(20),
+            child: Row(children: [
+              Icon(
+                Icons.schedule,
+              ),
+              SizedBox(
+                width: 6,
+              ),
+              Text(
+                '${meal.duration} min',
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+            ]),
           )
         ]),
       ),
