@@ -13,13 +13,13 @@ class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
 
   final GoRouter _router = GoRouter(
-    // initialLocation: '/',
+    initialLocation: '/',
     routes: [
       GoRoute(
           name: 'category',
           path: '/',
-          builder: (context, state) {
-            return MaterialApp(home: const CategoriesPage());
+          pageBuilder: (context, state) {
+            return MaterialPage(key: state.pageKey, child:const CategoriesPage());
           },
           routes: [
             GoRoute(
@@ -49,15 +49,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      theme: myLightThemeData,
+      darkTheme: myDarkThemeData,
       routeInformationProvider: _router.routeInformationProvider,
       routeInformationParser: _router.routeInformationParser,
       routerDelegate: _router.routerDelegate,
     );
-    // return MaterialApp(
-    //   title: 'Flutter Demo',
-    //   theme: myLightThemeData,
-    //   darkTheme: myDarkThemeData,
-    //   home: const CategoriesPage(),
-    // );
   }
 }
