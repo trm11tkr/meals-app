@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../models/meal.dart';
 import '../dummy_data.dart';
+import '../widgets/meal_item.dart';
 
 class CategoryMealsPage extends StatelessWidget {
   const CategoryMealsPage(
@@ -24,12 +25,7 @@ class CategoryMealsPage extends StatelessWidget {
       body: Center(
         child: ListView.builder(
           itemBuilder: (context, index) {
-            return ListTile(
-              title: Text(
-                categoryMeals[index].title,
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-            );
+            return MealItem(meal: categoryMeals[index]);
           },
           itemCount: categoryMeals.length,
         ),
