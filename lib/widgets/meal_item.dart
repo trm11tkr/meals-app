@@ -65,7 +65,7 @@ class MealItem extends StatelessWidget {
               ),
               Text(
                 '${meal.duration} min',
-                style: Theme.of(context).textTheme.bodyLarge,
+                style: Theme.of(context).textTheme.labelMedium,
               ),
             ]),
           )
