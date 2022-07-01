@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/meal.dart';
+import './meal_below_item.dart';
 
 class MealItem extends StatelessWidget {
   const MealItem({Key? key, required this.meal}) : super(key: key);
@@ -86,47 +87,17 @@ class MealItem extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.schedule,
-                      ),
-                      const SizedBox(
-                        width: 6,
-                      ),
-                      Text(
-                        '${meal.duration} min',
-                        style: Theme.of(context).textTheme.labelMedium,
-                      ),
-                    ],
+                  MealBelowItem(
+                    text: '${meal.duration} min',
+                    icon: const Icon(Icons.schedule),
                   ),
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.work,
-                      ),
-                      const SizedBox(
-                        width: 6,
-                      ),
-                      Text(
-                        complexityText,
-                        style: Theme.of(context).textTheme.labelMedium,
-                      ),
-                    ],
+                  MealBelowItem(
+                    text: complexityText,
+                    icon: const Icon(Icons.work),
                   ),
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.attach_money,
-                      ),
-                      const SizedBox(
-                        width: 6,
-                      ),
-                      Text(
-                        affordabilityText,
-                        style: Theme.of(context).textTheme.labelMedium,
-                      ),
-                    ],
+                  MealBelowItem(
+                    text: affordabilityText,
+                    icon: const Icon(Icons.attach_money),
                   ),
                 ],
               ),
