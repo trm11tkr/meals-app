@@ -11,28 +11,38 @@ class TabPage extends StatefulWidget {
 }
 
 class _TabPageState extends State<TabPage> {
+  final List<Widget> _pages = [
+    const CategoriesPage(),
+    const FavoritesPage(),
+  ];
+
+  int _selectedPageIndex = 0;
+
+  void _selectPage(int index) {
+    setState(() {
+      _selectedPageIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Meals'),
-          bottom: const TabBar(
-            indicatorColor: Color(0xFF231815),
-            tabs: [
-              Tab(
-                icon: Icon(Icons.category),
-                text: 'Category',
-              ),
-              Tab(
-                icon: Icon(Icons.favorite),
-                text: 'Favorites',
-              ),
-            ],
-          ),
-        ),
-        body: const TabBarView(children: [CategoriesPage(), FavoritesPage()]),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Meals'),
+      ),
+      body: _pages[_selectedPageIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        selectedItemColor: Theme.of(context).colorScheme.secondary,
+        currentIndex: _selectedPageIndex,
+        unselectedItemColor: Colors.white,
+        onTap: _selectPage,
+        items: const [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.category), label: 'Category'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.favorite), label: 'Favorite'),
+        ],
       ),
     );
   }
