@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({Key? key}) : super(key: key);
 
-  Widget _buildListTile(String title, IconData iconData) {
+  Widget _buildListTile(String title, IconData iconData, VoidCallback tapHandler) {
     return ListTile(
       leading: Icon(iconData, size: 26),
       title: Text(
@@ -14,7 +15,7 @@ class MainDrawer extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      onTap: () {},
+      onTap: tapHandler,
     );
   }
 
@@ -44,8 +45,12 @@ class MainDrawer extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          _buildListTile('Meals', Icons.restaurant),
-          _buildListTile('Filters', Icons.settings),
+          _buildListTile('Meals', Icons.restaurant, () {
+            context.go('/');
+          }),
+          _buildListTile('Filters', Icons.settings, () {
+            context.go('/filters');
+          }),
         ],
       ),
     );
