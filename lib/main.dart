@@ -5,7 +5,6 @@ import './pages/tabs_page.dart';
 import './dummy_data.dart';
 import './models/meal.dart';
 import './pages/category_meals_page.dart';
-import './pages/categories_page.dart';
 import './pages/meal_detail_page.dart';
 import './config/my_theme_data.dart';
 import './models/category.dart';
