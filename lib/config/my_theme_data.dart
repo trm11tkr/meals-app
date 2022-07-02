@@ -23,6 +23,12 @@ final myLightThemeData = ThemeData.light().copyWith(
       fontFamily: 'MPLUSRounded1c',
       fontWeight: FontWeight.w500,
     ),
+    bodySmall: TextStyle(
+      color: Colors.black,
+      fontSize: 20,
+      fontFamily: 'MPLUSRounded1c',
+      fontWeight: FontWeight.w500,
+    ),
     labelMedium: TextStyle(
       color: Colors.black,
       fontSize: 15,
