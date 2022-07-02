@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import './category_meals_page.dart';
 
 class CategoryItem extends StatelessWidget {
   const CategoryItem(
@@ -12,7 +11,7 @@ class CategoryItem extends StatelessWidget {
   final Color color;
 
   void _selectCategory(BuildContext context) {
-    context.go('/category_meals?id=$id&title=$title');
+    context.go('/category_meals/$id');
 
   }
 
