@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-
+import './pages/tabs_page.dart';
 import './dummy_data.dart';
 import './models/meal.dart';
 import './pages/category_meals_page.dart';
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         pageBuilder: (context, state) {
           return MaterialPage(
             key: state.pageKey,
-            child: const CategoriesPage(),
+            child: const TabPage(),
           );
         },
         routes: [
@@ -36,9 +36,7 @@ class MyApp extends StatelessWidget {
               pageBuilder: (context, state) {
                 final category = _category(state.params['categoryId']!);
                 return MaterialPage(
-                  child: CategoryMealsPage(
-                    category: category
-                  ),
+                  child: CategoryMealsPage(category: category),
                 );
               },
               routes: [
@@ -46,7 +44,7 @@ class MyApp extends StatelessWidget {
                   name: 'meal_detail',
                   path: 'meal_detail/:mealId',
                   pageBuilder: (context, state) {
-                    final Meal meal = _meal( state.params['mealId']!);
+                    final Meal meal = _meal(state.params['mealId']!);
                     return MaterialPage(
                       child: MealDetailPage(meal: meal),
                     );

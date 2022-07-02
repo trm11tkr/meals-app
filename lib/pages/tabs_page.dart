@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-
+import './favorites_page.dart';
 import './categories_page.dart';
 
 class TabPage extends StatefulWidget {
@@ -31,9 +31,7 @@ class _TabPageState extends State<TabPage> {
             ],
           ),
         ),
-        body: TabBarView(children: [
-          CategoriesPage(),
-        ]),
+        body: const TabBarView(children: [CategoriesPage(), FavoritesPage()]),
       ),
     );
   }
