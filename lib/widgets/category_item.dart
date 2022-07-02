@@ -11,7 +11,7 @@ class CategoryItem extends StatelessWidget {
   final Color color;
 
   void _selectCategory(BuildContext context) {
-    context.go('/category_meals?id=$id&title=$title');
+    context.go('/category_meals/$id');
 
   }
 
