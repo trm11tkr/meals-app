@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/main_drawer.dart';
 import './favorites_page.dart';
 import './categories_page.dart';
 
@@ -32,7 +33,8 @@ class _TabPageState extends State<TabPage> {
           _pages[_selectedPageIndex]['title'],
         ),
       ),
-      body: _pages[_selectedPageIndex]['pages'],
+      drawer: const MainDrawer(),
+      body: _pages[_selectedPageIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         selectedItemColor: Theme.of(context).colorScheme.secondary,

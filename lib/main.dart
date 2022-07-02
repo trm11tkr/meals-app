@@ -8,14 +8,20 @@ import './pages/category_meals_page.dart';
 import './pages/meal_detail_page.dart';
 import './config/my_theme_data.dart';
 import './models/category.dart';
+import './pages/filters_page.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
+class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   final GoRouter _router = GoRouter(
     initialLocation: '/',
     routes: [
@@ -30,27 +36,37 @@ class MyApp extends StatelessWidget {
         },
         routes: [
           GoRoute(
-              name: 'category_meals',
-              path: 'category_meals/:categoryId',
-              pageBuilder: (context, state) {
-                final category = _category(state.params['categoryId']!);
-                return MaterialPage(
-                  child: CategoryMealsPage(category: category),
-                );
-              },
-              routes: [
-                GoRoute(
-                  name: 'meal_detail',
-                  path: 'meal_detail/:mealId',
-                  pageBuilder: (context, state) {
-                    final Meal meal = _meal(state.params['mealId']!);
-                    return MaterialPage(
-                      child: MealDetailPage(meal: meal),
-                    );
-                  },
-                ),
-              ]),
+            name: 'category_meals',
+            path: 'category_meals/:categoryId',
+            pageBuilder: (context, state) {
+              final category = _category(state.params['categoryId']!);
+              return MaterialPage(
+                child: CategoryMealsPage(category: category),
+              );
+            },
+            routes: [
+              GoRoute(
+                name: 'meal_detail',
+                path: 'meal_detail/:mealId',
+                pageBuilder: (context, state) {
+                  final Meal meal = _meal(state.params['mealId']!);
+                  return MaterialPage(
+                    child: MealDetailPage(meal: meal),
+                  );
+                },
+              ),
+            ],
+          ),
         ],
+      ),
+      GoRoute(
+        name: 'filters',
+        path: '/filters',
+        pageBuilder: (context, state) {
+          return const MaterialPage(
+            child: FilterPage(),
+          );
+        },
       ),
     ],
     errorBuilder: (context, state) => MaterialApp(
