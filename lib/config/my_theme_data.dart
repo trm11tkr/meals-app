@@ -25,7 +25,7 @@ final myLightThemeData = ThemeData.light().copyWith(
     ),
     bodySmall: TextStyle(
       color: Colors.black,
-      fontSize: 20,
+      fontSize: 18,
       fontFamily: 'MPLUSRounded1c',
       fontWeight: FontWeight.w500,
     ),
