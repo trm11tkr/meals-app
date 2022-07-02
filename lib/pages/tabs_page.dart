@@ -11,9 +11,9 @@ class TabPage extends StatefulWidget {
 }
 
 class _TabPageState extends State<TabPage> {
-  final List<Widget> _pages = [
-    const CategoriesPage(),
-    const FavoritesPage(),
+  final List<Map<String, dynamic>> _pages = [
+    {'page': const CategoriesPage(), 'title': 'Categories'},
+    {'page': const FavoritesPage(), 'title': 'Favorite'},
   ];
 
   int _selectedPageIndex = 0;
@@ -28,9 +28,11 @@ class _TabPageState extends State<TabPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Meals'),
+        title: Text(
+          _pages[_selectedPageIndex]['title'],
+        ),
       ),
-      body: _pages[_selectedPageIndex],
+      body: _pages[_selectedPageIndex]['pages'],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         selectedItemColor: Theme.of(context).colorScheme.secondary,
