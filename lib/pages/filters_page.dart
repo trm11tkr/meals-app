@@ -14,7 +14,6 @@ class _FilterPageState extends State<FilterPage> {
   bool _vegetarian = false;
   bool _vegan = false;
   bool _lactoseFree = false;
-  final icon = Icon(Icons.bakery_dining);
 
   Widget _buildSwitchListTile(String title, String description,
       bool currentValue, Function(bool) updateValue) {
