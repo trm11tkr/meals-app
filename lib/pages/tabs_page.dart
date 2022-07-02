@@ -19,6 +19,7 @@ class _TabPageState extends State<TabPage> {
         appBar: AppBar(
           title: const Text('Meals'),
           bottom: const TabBar(
+            indicatorColor: Color(0xFF231815),
             tabs: [
               Tab(
                 icon: Icon(Icons.category),
