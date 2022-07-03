@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../models/category.dart';
 import '../models/meal.dart';
-import '../dummy_data.dart';
 import '../widgets/meal_item.dart';
 import '../provider/meal_provider.dart';
 
