@@ -1,22 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meals_app/provider/meal_provider.dart';
 
 import '../widgets/main_drawer.dart';
 
-class FilterPage extends StatefulWidget {
+class FilterPage extends ConsumerWidget {
   const FilterPage({Key? key}) : super(key: key);
 
-  @override
-  State<FilterPage> createState() => _FilterPageState();
-}
-
-class _FilterPageState extends State<FilterPage> {
-  bool _glutenFree = false;
-  bool _vegetarian = false;
-  bool _vegan = false;
-  bool _lactoseFree = false;
-
-  Widget _buildSwitchListTile(String title, String description,
-      bool currentValue, Function(bool) updateValue) {
+  Widget _buildSwitchListTile(BuildContext context, WidgetRef ref, String title,
+      String description, bool currentValue, Map<String, bool> filters) {
     return SwitchListTile(
       title: Text(
         title,
@@ -27,62 +19,46 @@ class _FilterPageState extends State<FilterPage> {
         style: Theme.of(context).textTheme.labelSmall,
       ),
       value: currentValue,
-      onChanged: updateValue,
+      onChanged: (newValue) {
+        filters.update(title, (value) => newValue);
+        final Map<String, bool> newFilter = {...filters};
+        ref.watch(filteringProvider.state).state = newFilter;
+      },
       activeColor: Theme.of(context).colorScheme.primary,
     );
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final Map<String, bool> filters = ref.watch(filteringProvider);
+
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Filters'),
-        ),
-        drawer: const MainDrawer(),
-        body: Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.all(20),
-              child: Text(
-                'Adjust your meal selection.',
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
+      appBar: AppBar(
+        title: const Text('Filters'),
+      ),
+      drawer: const MainDrawer(),
+      body: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(20),
+            child: Text(
+              'Adjust your meal selection.',
+              style: Theme.of(context).textTheme.bodyLarge,
             ),
-            Expanded(
-              child: ListView(
-                children: [
-                  _buildSwitchListTile(
-                      'Gluten-free',
-                      'Only include gluten-free meals',
-                      _glutenFree, (newValue) {
-                    setState(() {
-                      _glutenFree = newValue;
-                    });
-                  }),
-                  _buildSwitchListTile(
-                      'Lactose-free',
-                      'Only include lactose-free meals',
-                      _lactoseFree, (newValue) {
-                    setState(() {
-                      _lactoseFree = newValue;
-                    });
-                  }),
-                  _buildSwitchListTile('Vegetarian',
-                      'Only include Vegetarian meals', _vegetarian, (newValue) {
-                    setState(() {
-                      _vegetarian = newValue;
-                    });
-                  }),
-                  _buildSwitchListTile(
-                      'Vegan', 'Only include Vegan meals', _vegan, (newValue) {
-                    setState(() {
-                      _vegan = newValue;
-                    });
-                  }),
-                ],
-              ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemBuilder: (context, index) {
+                final String key = filters.keys.elementAt(index);
+                final bool currentValue = filters[key] ?? false;
+                return _buildSwitchListTile(
+                    context, ref, key, 'description', currentValue, filters);
+              },
+              itemCount: filters.length,
             ),
-          ],
-        ));
+          ),
+        ],
+      ),
+    );
   }
 }
